@@ -1,0 +1,7 @@
+{
+  "name": "api_mock",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
