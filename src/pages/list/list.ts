@@ -10,6 +10,8 @@ import { ArticleShowPage } from './../article-show/article-show';
 })
 export class ListPage {
 articles: any[];
+canRender: boolean = false;
+
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -18,10 +20,15 @@ articles: any[];
   ngOnInit():void {
     this.articleProvider.all().subscribe(data => {
       this.articles = data;
+      this.renderMe();
     });
   }
 
   launchArticleShowPage(id) {
     this.navCtrl.push(ArticleShowPage, { article_id: id} )
+  }
+
+  renderMe() {
+    this.canRender = true;
   }
 }

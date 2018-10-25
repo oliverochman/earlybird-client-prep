@@ -8,11 +8,14 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let article of articles">
-    <h2> {{article.title}}</h2>
-    <p>{{article.details}}</p>
-    <button ion-button icon-only (click)="launchArticleShowPage(article.id)" light>
-      View Article
-    </button>
+  <div *ngIf="canRender">
+    <div *ngFor="let article of articles">
+      <h2> {{article.title}}</h2>
+      <p>{{article.details}}</p>
+      <p>Category: {{article.categories[0]["name"]}}</p>
+      <button ion-button icon-only (click)="launchArticleShowPage(article.id)" light>
+        View Article
+      </button>
+    </div>
   </div>
 </ion-content>
