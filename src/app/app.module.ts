@@ -3,7 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import { Angular2TokenService } from 'angular2-token';
+import { Angular2TokenService } from 'angular2-token-ionic3';
+
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+// If you guys are going to use the same package as me
+// its importand that you import the InAppBrowser aswell
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -40,7 +44,8 @@ import { ArticleProvider } from '../providers/article/article';
     SplashScreen,
     Angular2TokenService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ArticleProvider
+    ArticleProvider,
+    InAppBrowser
   ]
 })
 export class AppModule {}

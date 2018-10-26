@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { Angular2TokenService } from 'angular2-token';
+import { Angular2TokenService } from 'angular2-token-ionic3';
 
 
 import { HomePage } from '../pages/home/home';
@@ -18,6 +18,12 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
+  // I would suggest that you guys follow the guide 
+  // in the cooper challenge to implement login.
+  // But everything you need for it is in this application
+  // The only difference is that I use another npm package
+  // but it is based on the same one and has the same implemntation
+
   pages: Array<{title: string, component: any}>;
   constructor(
     public platform: Platform,
@@ -29,9 +35,15 @@ export class MyApp {
     this._tokenService.init({
       apiBase: 'http://localhost:3000/api'
     });
-    this.initializeApp();
+    platform.ready().then(() => {
+      _tokenService.init({
+        // apiBase: 'https://ca-procurement.herokuapp.com/api/',
+        apiBase: 'http://localhost:3000/api/',
+      });
+      statusBar.styleDefault();
+      splashScreen.hide();
+    });
 
-    // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'List', component: ListPage }
@@ -39,18 +51,7 @@ export class MyApp {
 
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
-  }
-
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 

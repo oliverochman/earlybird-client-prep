@@ -24,6 +24,8 @@ canRender: boolean = false;
     });
   }
 
+  // Here we push in the id of the article that we want
+  // to see in the show page
   launchArticleShowPage(id) {
     this.navCtrl.push(ArticleShowPage, { article_id: id} )
   }

@@ -23,15 +23,15 @@ export class ArticleShowPage {
               public navParams: NavParams,
               private articleProvider: ArticleProvider) {
   }
+
+  // Here we grab the id that we pushed from the article-index
+  // In this application that component is called list instead
+  // We store it in articleId variable and push it to the provider
+  // so we get the correct article back
   ngOnInit() {
     this.articleId = this.navParams.get("article_id");
     this.articleProvider.show(this.articleId).subscribe(response => {
       this.article = response;
-      this.renderMe();
     });
-  }
-
-  renderMe() {
-    this.canRender = true;
   }
 }
