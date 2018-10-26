@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 
@@ -14,8 +13,8 @@ export class ArticleProvider {
 		},
 		{
 			"id":2,
-			"title":"Protect my feet and with that, my life",
-			"details":"I will not be able to walk without my feet",
+			"title":"Life insurance",
+			"details":"If I die, I want a lot of money",
 			"categories":
 				[{"id":12,"name":"Insurance"}]
 		}
